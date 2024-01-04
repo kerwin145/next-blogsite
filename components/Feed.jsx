@@ -24,8 +24,7 @@ const Feed = () => {
 
   useEffect(()=>{
     const fetchPosts = async() => {
-      const timestamp = new Date().getTime() //cache busting
-      const response = await fetch(`/api/post?timestamp=${timestamp}`)
+      const response = await fetch(`/api/post`, { cache: 'no-store' })
       const data = await response.json()
       setPosts(data)
     }
