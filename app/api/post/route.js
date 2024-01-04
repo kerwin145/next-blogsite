@@ -10,6 +10,6 @@ export const GET = async (req, res) => {
 
         return new Response(JSON.stringify(posts), { status: 200 });
     } catch (error) {
-        return new Response("Failed to fetch posts", { status: 500, 'Cache-Control':'no-store, must-revalidate'});
+        return new Response("Failed to fetch posts", { status: 500});
     }
 };
