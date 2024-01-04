@@ -33,7 +33,7 @@ const Feed = () => {
   }, [])
   
   const handleSearchChange = (e) => {
-
+    setSearchText(e.target.value)
   }
   
   return ( 
