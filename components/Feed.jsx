@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import PostCard from "./PostCard"
+import { useRouter } from "next/navigation"
 
 const PostCardList = ({data, handleTagClick}) => {
   return (
@@ -20,11 +21,13 @@ const PostCardList = ({data, handleTagClick}) => {
 const Feed = () => {
   const [searchText, setSearchText] = useState("")
   const [posts, setPosts] = useState([])
-
+  const router = useRouter()
 
   useEffect(()=>{
     const fetchPosts = async() => {
-      const response = await fetch("/api/post", { next: { revalidate: 0 } });
+      router.refresh()
+
+      const response = await fetch("/api/post", { cache: 'no-store' });
       const data = await response.json()
       setPosts(data)
     }
