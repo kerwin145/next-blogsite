@@ -4,6 +4,7 @@ import { connectToDB } from "@utils/database"
 export const GET = async(req, res) => {
     try {
         await connectToDB()
+        res.setHeader('Cache-Control', 'no-store, must-revalidate');
         const posts = await Post.find().populate('creator')
         console.log("Retrieved all posts")
         console.log(posts)
