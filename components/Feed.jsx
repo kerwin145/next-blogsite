@@ -22,18 +22,16 @@ const Feed = () => {
   const [searchText, setSearchText] = useState("")
   const [posts, setPosts] = useState([])
   const router = useRouter()
-
+  
   useEffect(()=>{
     const fetchPosts = async() => {
-      router.refresh()
-
       const response = await fetch("/api/post", { cache: 'no-store' });
       const data = await response.json()
       setPosts(data)
     }
 
     fetchPosts()
-  }, [])
+  }, [router.asPath])
   
   const handleSearchChange = (e) => {
     setSearchText(e.target.value)

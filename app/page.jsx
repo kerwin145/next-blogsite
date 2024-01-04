@@ -1,5 +1,4 @@
-// import React from 'react'
-
+'use client'
 import Feed from "@components/Feed"
 
 const Home = () => {
