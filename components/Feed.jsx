@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import PostCard from "./PostCard"
-import { useRouter } from "next/navigation"
 
 const PostCardList = ({data, handleTagClick}) => {
   return (

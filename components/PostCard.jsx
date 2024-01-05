@@ -1,6 +1,5 @@
 'use client'
 
-import { PostponedPathnameNormalizer } from "next/dist/server/future/normalizers/request/postponed"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
