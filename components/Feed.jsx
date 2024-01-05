@@ -21,7 +21,6 @@ const PostCardList = ({data, handleTagClick}) => {
 const Feed = () => {
   const [searchText, setSearchText] = useState("")
   const [posts, setPosts] = useState([])
-  const router = useRouter()
   
   useEffect(()=>{
     const fetchPosts = async() => {
@@ -31,7 +30,7 @@ const Feed = () => {
     }
 
     fetchPosts()
-  }, [router.asPath])
+  }, [])
   
   const handleSearchChange = (e) => {
     setSearchText(e.target.value)
