@@ -28,7 +28,7 @@ const MyProfile = () => {
 
   const handleEdit = async (post) => {
     console.log("navigating to edit post")
-    router.push(`update-post?id=${post._id}`)
+    router.push(`put-post?id=${post._id}`)
   }
 
   const handleDelete = async(post) => {

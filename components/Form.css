@@ -1,0 +1,7 @@
+.tag-info-text {
+    display: none;
+  }
+  
+.font-satoshi:hover + .tag-info-text,  .tag-info-text:hover{
+    display: block;
+}

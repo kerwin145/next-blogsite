@@ -1,6 +1,8 @@
 import Link from "next/link"
-
+import { FaInfoCircle } from 'react-icons/fa';
+import './Form.css'
 const Form = ({type, post, setPost, submitting, handleSubmit}) => {
+  
   return (
     <section className="w-full max-w-2xl  flex-start flex-col">
       <h1 className="head_text">
@@ -10,7 +12,7 @@ const Form = ({type, post, setPost, submitting, handleSubmit}) => {
     
       <form onSubmit = {handleSubmit} className="mt-10 w-full flex flex-col gap-3 glassmorphism">
         <label htmlFor="formContent-text">
-          <span className="font-satoshi font-semibold text-base text-gray-700">What content shall you compose?</span>
+          <span className="font-satoshi font-semibold text-base text-gray-700">What content shall you compose?*</span>
         </label>
         <textarea name="formContent-text" id="formContent"
           value = {post.text}
@@ -21,14 +23,24 @@ const Form = ({type, post, setPost, submitting, handleSubmit}) => {
         />
 
         <label htmlFor="formContent-tag">
-          <span className="font-satoshi font-semibold text-base text-gray-700">Tag
-            <span className="font-normal text-sm"> (#tagExample, #question, #hamburgers)</span>
-          </span>
+          <div className="tag-info-container">
+            <p className="font-satoshi font-semibold text-base text-gray-700">
+              Tag*
+              <FaInfoCircle
+                className={"mx-2 inline"}
+              />
+            </p>
+            <span className="text-sm tag-info-text text-gray-500">
+              Tags can have maximum of 20 characters, and there is a maximum of 8 unique tags.
+            </span>
+            </div>
+
+          <p className="font-normal text-sm"> To submit multiple tags, separate them with a space.</p>
         </label>
         <input name="formContent-tag" id="formContent"
           value = {post.tag}
           onChange={(e) => setPost({...post, tag: e.target.value})}
-          placeholder="#tag"
+          placeholder="cats"
           required
           className= "form_input"
           autoComplete="off"

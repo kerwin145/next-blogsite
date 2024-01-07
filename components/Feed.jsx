@@ -34,6 +34,10 @@ const Feed = () => {
   const handleSearchChange = (e) => {
     setSearchText(e.target.value)
   }
+
+  function handleTagClick(t){
+    console.log(t)
+  }
   
   return ( 
     <section className="feed">
@@ -48,7 +52,7 @@ const Feed = () => {
       </form>
       <PostCardList
         data = {posts}
-        handleTagClick = {()=>{}}
+        handleTagClick = {handleTagClick}
       />
     </section>
   )
