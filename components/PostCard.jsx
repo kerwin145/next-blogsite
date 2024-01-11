@@ -54,7 +54,7 @@ const PostCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
       <p className="my-4 font-satoshi text-sm text-gray-700">{post.text}</p>
       <div className="flex gap-2">
         {post.tag.split(" ").map(t => 
-          <p className="font-inter text-sm blue_gradient cursor-pointer"
+          <p key = {`${t}_post`} className="font-inter text-sm blue_gradient cursor-pointer"
             onClick = {() => handleTagClick && handleTagClick(t)}
           >
             #{t}

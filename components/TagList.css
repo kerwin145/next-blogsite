@@ -1,0 +1,4 @@
+input[type="checkbox"].white_check:before {
+   background-color: white;
+   color: white;
+}
