@@ -1,28 +1,16 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import PostCard from "./PostCard"
 import TagList from "./TagList"
-
-const PostCardList = ({data, handleTagClick}) => {
-  return (
-    <div className="mt-16 prompt_layout">
-      {data.map(post => 
-        <PostCard
-          key = {post._id}
-          post = {post}
-          handleTagClick = {handleTagClick}
-        />
-      )}
-    </div>
-  )
-}
+import { PostCardList } from "./PostCardList"
+import { useSession } from "next-auth/react"
 
 const Feed = () => {
   const [posts, setPosts] = useState([])
   const [searchText, setSearchText] = useState("")
   const [tagFilters, setTagFilters] = useState([])
   const [filteredPosts, setFilteredPosts] = useState([])
+  const {data: session} = useSession()
 
   const[isStrictTagFilter, setStrictTagFilter] = useState(false)
   
@@ -32,12 +20,15 @@ const Feed = () => {
       setTagFilters([])
       const response = await fetch("/api/post", { cache: 'no-store' });
       const data = await response.json()
+      if(session?.user.id){
+        await fetch(`api/users/${session?.user.id}/cleanVotes`, {method: "POST"})
+      }
       setPosts(data)
       setFilteredPosts(data)
     }
 
     fetchPosts()
-  }, [])
+  }, [session?.user.id])
 
   useEffect(()=>{
     if(searchText === "" && tagFilters.length === 0){

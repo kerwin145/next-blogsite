@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from 'react'
 import Nav from '@components/Nav'
 import Provider from '@components/Provider'
 import '@styles/globals.css' //note, the @ can be seen defined in the jsconfig.json file, where it serves to point to the root directory

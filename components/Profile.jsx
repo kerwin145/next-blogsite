@@ -9,14 +9,16 @@ const Profile = ({name, desc, data, handleEdit, handleDelete}) => {
       </h1>
       <p className='desc text-left'> {desc}</p>
       <div className="mt-10 prompt_layout">
-      {data.map(post => 
+      {data.length > 0 ? data.map(post => 
         <PostCard
           key = {post._id}
           post = {post}
           handleEdit = {()=> handleEdit && handleEdit(post)}
           handleDelete = {()=> handleDelete && handleDelete(post)}
-        />
-      )}
+        />)
+        :
+        <div className="">You have no posts. Go make something!</div>
+      }
     </div>
     </section>
   )

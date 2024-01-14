@@ -10,4 +10,5 @@ export const GET = async (req, {params}, res) => {
     } catch (error) {
         return new Response("Failed to fetch posts", {status: 500})
     }
+    
 }

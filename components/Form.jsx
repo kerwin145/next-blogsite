@@ -31,7 +31,7 @@ const Form = ({type, post, setPost, submitting, handleSubmit}) => {
               />
             </p>
             <span className="text-sm tag-info-text text-gray-500">
-              Tags can have maximum of 20 characters, and there is a maximum of 8 unique tags.
+              Tags can have maximum of 20 characters, and a maximum of 8 unique tags.
             </span>
             </div>
 

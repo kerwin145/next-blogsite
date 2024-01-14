@@ -6,7 +6,9 @@ const UserSchema = new Schema({
         unique: [true, "email already exists"], 
         required: [true, "email is required"],
     },
-    image: {type: String}
+    image: {type: String},
+    likedPosts: {type: [Schema.Types.ObjectId], ref: "Post"},
+    dislikedPosts: {type: [Schema.Types.ObjectId], ref: "Post"},
 })
 
 const User = models.User || model("User", UserSchema)

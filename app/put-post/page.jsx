@@ -46,7 +46,7 @@ const PutPost = () => {
         const finalTags = [...tagSet].filter(t => t.length > 0)
 
         if(finalTags.length > 8 || finalTags.some(t => t.length > 20)){
-            alert("Tags can have maximum of 20 characters, and there is a maximum of 8 unique tags.")
+            alert("Tags can have maximum of 20 characters, and a maximum of 8 unique tags.")
             return
         }
 
@@ -76,11 +76,7 @@ const PutPost = () => {
     
     const createPost = (e) => {
         e.preventDefault()
-        handlePostRequest('/api/post/new', 'POST', {
-            text: post.text,
-            userId: session?.user.id,
-            tag: post.tag,
-        })
+        handlePostRequest('/api/post/new', 'POST', {text: post.text,userId: session?.user.id, tag: post.tag})
     }
 
     return (
