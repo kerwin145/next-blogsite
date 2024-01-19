@@ -9,6 +9,6 @@ export const GET = async (req, res) => {
 
         return new Response(JSON.stringify(posts), { status: 200 });
     } catch (error) {
-        return new Reszponse("Failed to fetch posts", { status: 500});
+        return new Response("Failed to fetch posts", { status: 500});
     }
 };
