@@ -6,7 +6,7 @@ import { PostCardList } from "./PostCardList"
 import { useSession } from "next-auth/react"
 
 const Feed = () => {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState(null)
   const [searchText, setSearchText] = useState("")
   const [tagFilters, setTagFilters] = useState([])
   const [filteredPosts, setFilteredPosts] = useState([])
@@ -25,6 +25,8 @@ const Feed = () => {
       }
       setPosts(data)
       setFilteredPosts(data)
+      console.log("acquired data")
+      console.log(data)
     }
 
     fetchPosts()
@@ -93,6 +95,8 @@ const Feed = () => {
   
   return ( 
     <section className="feed">
+      {posts ? <>
+
       <form className="relative w-full flex-center" onSubmit={(e)=>{e.preventDefault()}}>
         <input 
           type="text" 
@@ -102,15 +106,20 @@ const Feed = () => {
           required 
           className="search_input peer"/>
       </form>
-      <TagList 
-        tagFilters={tagFilters}
-        setTagFilters={setTagFilters}
-        setStrictTagFilter = {setStrictTagFilter}
-      />
-      <PostCardList
-        data = {filteredPosts}
-        handleTagClick = {handleTagClick}
-      />
+
+        <TagList 
+          tagFilters={tagFilters}
+          setTagFilters={setTagFilters}
+          setStrictTagFilter = {setStrictTagFilter}
+          />
+        <PostCardList
+          data = {filteredPosts}
+          handleTagClick = {handleTagClick}
+        />
+      </>
+      :
+      <p>Loading...</p>
+      }
     </section>
   )
 }

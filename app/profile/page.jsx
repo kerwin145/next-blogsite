@@ -8,7 +8,7 @@ import useSessionValidation from "@utils/useSessionValidation"
 const MyProfile = () => {
   const router = useRouter()
   const {session, sessionStatus} = useSessionValidation()
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState(null)
 
   useEffect(() => {
     const fetchPosts = async () => {

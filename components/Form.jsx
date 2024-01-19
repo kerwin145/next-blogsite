@@ -40,7 +40,7 @@ const Form = ({type, post, setPost, submitting, handleSubmit}) => {
         <input name="formContent-tag" id="formContent"
           value = {post.tag}
           onChange={(e) => setPost({...post, tag: e.target.value})}
-          placeholder="cats"
+          placeholder="ex: cats"
           required
           className= "form_input"
           autoComplete="off"
