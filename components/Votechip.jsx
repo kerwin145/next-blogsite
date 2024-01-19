@@ -36,6 +36,10 @@ const Votechip = ({post, verticalFormat = false}) => {
     if(voteLoading) 
       return
  
+    if(!session?.user.id){
+      alert("You need to be logged in to vote!")
+      return
+    }
     setVoteLoading(true)
     try {
       await fetch(`api/post/${post._id}/like`,
@@ -70,7 +74,11 @@ const Votechip = ({post, verticalFormat = false}) => {
   const handleDislike =  async () => {
     if(voteLoading) 
       return
-
+    
+    if(!session?.user.id){
+      alert("You need to be logged in to vote!")
+      return
+    }
     setVoteLoading(true)
 
     try {
